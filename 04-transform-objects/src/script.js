@@ -18,7 +18,7 @@ scene.add(axesHelper);
 const group = new THREE.Group();
 scene.add(group);
 
-// mesh
+// mesh (object 3d)
 const cube1 = new THREE.Mesh(
   new THREE.BoxGeometry(1, 1, 1),
   new THREE.MeshBasicMaterial({ color: 0xff0000 })
@@ -41,12 +41,15 @@ group.add(cube1);
 group.add(cube2);
 group.add(cube3);
 
+// move group
+group.position.x = 1;
+group.position.z = 2;
+
 // rotate group
 group.rotation.y = 0.5;
 
 // scale group
 group.scale.set(0.5, 0.5, 0.5);
-
 
 /**
  * Sizes
@@ -61,6 +64,7 @@ const sizes = {
  */
 const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height);
 camera.position.set(1, 1, 5);
+camera.lookAt(group.position);
 scene.add(camera);
 
 /**
